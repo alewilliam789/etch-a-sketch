@@ -1,0 +1,10 @@
+{
+  "name": "etch-a-sketch",
+  "version": "1.0.0",
+  "description": "Simple etch-a-sketch in vanilla JS",
+  "main": "index.html",
+  "scripts": {},
+  "keywords": [],
+  "author": "Alex Williamson",
+  "license": "ISC"
+}
