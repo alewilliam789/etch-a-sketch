@@ -13,6 +13,10 @@ function createBox(rowNum, columnNum, dim){
     // Iterate through each class and add to the div
     box.classList.add(...boxClasses);
 
+    box.addEventListener('mouseover', (event) =>{
+        event.target.classList.add("bg-green-700")
+    })
+
     // If it's the bottom row add a bottom border
     if (rowNum === dim){
         box.classList.add("border-b-2");
@@ -47,7 +51,6 @@ function createRow(rowNum){
     grid.appendChild(row);
 }
 
-
 function createGrid(){
     // Dimensions of box
     dim =16
@@ -63,3 +66,7 @@ function createGrid(){
 
 // Create grid on load
 window.addEventListener("load",createGrid);
+
+
+// Add change in color on hover
+
