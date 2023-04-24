@@ -1,8 +1,17 @@
 
 
+function getDimension(){
+    base = document.getElementById("grid");
+    return Number(prompt("What will the dimension be for the sides of the grid?"));
+
+}
+
 function createBox(rowNum, columnNum, dim){
+    // Height of each box
+    let boxDim = 960/dim
+
     // List of Tailwind class to create box
-    let boxClasses= ['p-3', 'border-l-2', 'border-t-2', 'border-black'];
+    let boxClasses= [`h-[${boxDim}px]`,`w-[${boxDim}px]`,'flex-grow','border', 'border-black'];
     
     // Get the row you are appending to
     row = document.getElementById(`row${rowNum}`);
@@ -53,7 +62,7 @@ function createRow(rowNum){
 
 function createGrid(){
     // Dimensions of box
-    dim =16
+    dim = getDimension();
 
     // Iterate through each place and add a box
     for (let i=1;i <= dim; i++){
@@ -63,6 +72,8 @@ function createGrid(){
         }
     }
 }
+
+
 
 // Create grid on load
 window.addEventListener("load",createGrid);
