@@ -1,15 +1,31 @@
 
 
 function getDimension(){
+    // Grabs the base grid div
     base = document.getElementById("grid");
+
+
+    // Grabs the basic dimension from the user for sides
     dim = Number(prompt("What will the dimension be for the sides of the grid?"));
+
+    // Makes sure the while is running while the input isn't valid
     input = true
+
+    // Confirms valid user input
     while(input){
+
+        // If it is undefined rerun prompt
         if(!dim){
             dim = Number(prompt("That's not a number please reenter a new dimension."))}
+        
+        // If it is negative or more than 100
         else if(dim>100 || dim <=0){
             dim =Number(prompt("Please enter in a dimension between 0 and 100"))}
+        
+        // Or else stop loop
         else{
+
+            // Breaks the while loop
             input = false
         }
     }
@@ -32,6 +48,7 @@ function createBox(rowNum, columnNum, dim){
     // Iterate through each class and add to the div
     box.classList.add(...boxClasses);
 
+    // Adds hover event to add dark green background
     box.addEventListener('mouseover', (event) =>{
         event.target.classList.add("bg-green-700")
     })
@@ -72,8 +89,13 @@ function createRow(rowNum){
 
 function changeButton(){
     gameButton = document.getElementById("game-button");
+
     gameButton.innerText = "Restart"
+
+    // Removes all onclick events to pass new ones
     gameButton.onclick = '';
+
+    // New onclick event that clears the existing grid and creates another grid
     gameButton.addEventListener("click",() =>{
         grid = document.getElementById("grid");
         grid.innerHTML = "";
@@ -94,6 +116,4 @@ function createGrid(){
         }
 }
 }
-
-// Add change in color on hover
 
