@@ -2,8 +2,18 @@
 
 function getDimension(){
     base = document.getElementById("grid");
-    return Number(prompt("What will the dimension be for the sides of the grid?"));
-
+    dim = Number(prompt("What will the dimension be for the sides of the grid?"));
+    input = true
+    while(input){
+        if(!dim){
+            dim = Number(prompt("That's not a number please reenter a new dimension."))}
+        else if(dim>100 || dim <=0){
+            dim =Number(prompt("Please enter in a dimension between 0 and 100"))}
+        else{
+            input = false
+        }
+    }
+    return dim;
 }
 
 function createBox(rowNum, columnNum, dim){
@@ -60,6 +70,18 @@ function createRow(rowNum){
     grid.appendChild(row);
 }
 
+function changeButton(){
+    gameButton = document.getElementById("game-button");
+    gameButton.innerText = "Restart"
+    gameButton.onclick = '';
+    gameButton.addEventListener("click",() =>{
+        grid = document.getElementById("grid");
+        grid.innerHTML = "";
+        createGrid();
+    })
+
+}
+
 function createGrid(){
     // Dimensions of box
     dim = getDimension();
@@ -70,14 +92,8 @@ function createGrid(){
         for (let j=1; j <= dim; j++){
             createBox(i,j,dim);
         }
-    }
 }
-
-
-
-// Create grid on load
-window.addEventListener("load",createGrid);
-
+}
 
 // Add change in color on hover
 
